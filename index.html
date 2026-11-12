@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>C-NOTE · Clinical text to SNOMED CT, verified and confidence-scored | CNOTE Healthtech</title>
 <meta name="description" content="C-NOTE reads clinical documents and turns every clinically meaningful statement into structured, coded data: SNOMED CT, ICD-10 and OPCS-4, with a calibrated confidence score. Self-hosted on a single GPU server.">
-<meta name="theme-color" content="#031c1b">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
 <link rel="canonical" href="https://cnote.co.uk/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
@@ -23,17 +24,17 @@
 <header class="nav" id="top">
   <div class="wrap nav-in">
     <a class="brand" href="#top" aria-label="C-NOTE home">
-      <svg class="brand-mark" viewBox="357 120 776 787" aria-hidden="true"><path fill="currentColor" d="M1073 126H757A390 387.500 0 0 0 757 901H1126V322H984V560L757 325H620V713H750V497L985 768H764A258 254.500 0 0 1 764 259H1073Z"/></svg>
-      <span class="brand-name">C-NOTE</span>
+      <svg viewBox="357 120 776 787" aria-hidden="true"><path fill="currentColor" d="M1073 126H757A390 387.500 0 0 0 757 901H1126V322H984V560L757 325H620V713H750V497L985 768H764A258 254.500 0 0 1 764 259H1073Z"/></svg>
+      <span>C-NOTE</span>
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="#how">How it works</a>
-      <a href="#evidence">Evidence</a>
-      <a href="#confidence">Confidence</a>
       <a href="#coverage">Coverage</a>
-      <a href="#deployment">Deployment</a>
+      <a href="#evaluation">Evaluation</a>
+      <a href="#speed">Speed and cost</a>
+      <a href="#configuration">Configuration</a>
     </nav>
-    <a class="btn btn-sm btn-primary" href="mailto:enquiries@cnote.co.uk">Get in touch</a>
+    <a class="btn" href="#contact">Contact</a>
   </div>
 </header>
 
@@ -41,123 +42,90 @@
 
 <section class="hero">
   <div class="wrap hero-in">
-    <div class="hero-copy">
-      <p class="eyebrow eyebrow-light">Clinical text → SNOMED CT, verified and confidence-scored</p>
-      <h1>Clinical text in.<br>Verified, coded data out.</h1>
-      <p class="hero-lede">C-NOTE reads clinical documents and turns every clinically meaningful statement into structured, coded data: a SNOMED CT concept, the details that qualify it, ICD-10 and OPCS-4 codes where they apply, and a calibrated confidence score.</p>
-      <div class="hero-cta">
-        <a class="btn btn-light" href="mailto:enquiries@cnote.co.uk">Talk to us</a>
-        <a class="btn btn-ghost" href="#evidence">See the evidence</a>
-      </div>
-      <ul class="hero-points">
-        <li>Independently verified before release</li>
-        <li>Runs inside your own network</li>
-        <li>UK and US code systems</li>
-      </ul>
+    <div>
+      <p class="kicker">C-NOTE · CNOTE Healthtech</p>
+      <h1>Clinical text to SNOMED CT, verified and confidence-scored</h1>
+      <p class="lede">C-NOTE reads clinical documents and turns every clinically meaningful statement into structured, coded data: a SNOMED CT concept, the details that qualify it (negation, timing, certainty, laterality, severity, body site, dose and more), ICD-10 and OPCS-4 codes where they apply, and a calibrated confidence score.</p>
+      <p class="lede">Every result passes an independent verification step before it is released. It runs on a single GPU server inside your own network, so patient text never has to leave it.</p>
+      <p class="hero-links"><a class="btn btn-solid" href="mailto:enquiries@cnote.co.uk">Contact us</a><a href="#evaluation">Evaluation results</a></p>
     </div>
 
-    <figure class="demo" aria-label="Illustrative example of C-NOTE output">
-      <div class="demo-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="demo-title">Clinic letter · History</span></div>
-      <p class="demo-text">Known <mark class="m1">type 2 diabetes mellitus</mark>, on <mark class="m2">metformin 500 mg twice daily</mark>. Denies <mark class="m3">chest pain</mark>.</p>
-      <div class="demo-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v15m0 0-6-6m6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <ul class="demo-rows">
-        <li class="r1">
-          <div class="demo-main"><span class="type">Disease</span><strong>Type 2 diabetes mellitus</strong></div>
-          <div class="demo-meta"><code>SNOMED CT 44054006</code><code>ICD-10 E11.9</code><span class="pill">affirmed</span></div>
-          <div class="conf" role="img" aria-label="Confidence 97 out of 100"><span style="--v:97%"></span><b>97</b></div>
-        </li>
-        <li class="r2">
-          <div class="demo-main"><span class="type">Medication</span><strong>Metformin</strong></div>
-          <div class="demo-meta"><span class="pill">500 mg</span><span class="pill">twice daily</span><span class="pill">taking</span></div>
-          <div class="conf" role="img" aria-label="Confidence 96 out of 100"><span style="--v:96%"></span><b>96</b></div>
-        </li>
-        <li class="r3">
-          <div class="demo-main"><span class="type">Symptom</span><strong>Chest pain</strong></div>
-          <div class="demo-meta"><code>SNOMED CT 29857009</code><span class="pill pill-neg">denied</span></div>
-          <div class="conf" role="img" aria-label="Confidence 94 out of 100"><span style="--v:94%"></span><b>94</b></div>
-        </li>
-      </ul>
-      <figcaption>Illustrative example with made-up text and scores. Not patient data.</figcaption>
+    <figure class="example">
+      <figcaption>Example</figcaption>
+      <p class="ex-text">Known <mark>type 2 diabetes mellitus</mark>, on <mark>metformin 500 mg twice daily</mark>. Denies <mark>chest pain</mark>.</p>
+      <table class="ex-table">
+        <thead><tr><th scope="col">Statement</th><th scope="col">Codes and details</th><th scope="col" class="num">Confidence</th></tr></thead>
+        <tbody>
+          <tr><th scope="row"><small>Disease</small>Type 2 diabetes mellitus</th><td><code>SNOMED CT 44054006</code> <code>ICD-10 E11.9</code><br>affirmed</td><td class="num">97</td></tr>
+          <tr><th scope="row"><small>Medication</small>Metformin</th><td>500 mg · twice daily<br>taking</td><td class="num">96</td></tr>
+          <tr><th scope="row"><small>Symptom</small>Chest pain</th><td><code>SNOMED CT 29857009</code><br>denied</td><td class="num">94</td></tr>
+        </tbody>
+      </table>
+      <p class="ex-note">Illustrative: made-up text and scores, not patient data.</p>
     </figure>
   </div>
 </section>
 
-<section class="stats" aria-label="At a glance">
-  <div class="wrap stats-in">
-    <div class="stat"><b>93%</b><span>of the conditions expert annotators recorded were found by C-NOTE, against 79% for the hospital's own coders<a class="fn" href="#evidence" aria-label="See how this was measured">1</a></span></div>
-    <div class="stat"><b>90%</b><span>of C-NOTE's conditions correct in every detail, comparable with the human coders<a class="fn" href="#evidence" aria-label="See how this was measured">1</a></span></div>
-    <div class="stat"><b>0.8%</b><span>expected calibration error on 22,352 held-out statements (AUC 0.92)</span></div>
-    <div class="stat"><b>1 GPU</b><span>server inside your own network, so patient text never has to leave it</span></div>
+<section class="sec" id="glance">
+  <div class="wrap">
+    <h2>At a glance</h2>
+    <dl class="spec">
+      <div><dt>Coded output</dt><dd>SNOMED CT concept for every statement; ICD-10 (UK) with OPCS-4, or ICD-10-CM (US); UMLS CUI.</dd></div>
+      <div><dt>Coverage</dt><dd>13 core semantic types, 16 report-specialised types (radiology, pathology, cytology, endoscopy, cardiology, respiratory, neurophysiology, nuclear medicine, genomics) and your own custom types.</dd></div>
+      <div><dt>Confidence</dt><dd>Two calibrated scores per statement: probability correct, and probability correct or debatable. A score of 90 means right about nine times in ten. Expected calibration error 0.8%, AUC 0.92 on 22,352 held-out statements.</dd></div>
+      <div><dt>Accuracy</dt><dd>Finds 93% of the conditions expert annotators recorded, against 79% for the hospital's own coders; 90% of its conditions correct in every detail. See <a href="#evaluation">Evaluation</a>.</dd></div>
+      <div><dt>Throughput</dt><dd>≈4,200 extractions per GPU-hour on one NVIDIA H100, each a verified, coded clinical statement. See <a href="#speed">Speed and cost</a>.</dd></div>
+      <div><dt>Deployment</dt><dd>Self-hosted on a single GPU server. Two model sizes: Large, with calibrated confidence, and Medium, for GPUs with less memory. Whole episodes of care are processed document by document.</dd></div>
+      <div><dt>Traceability</dt><dd>Every result carries its document, section and position, a readable sentence restating it, and a provenance stamp (SNOMED CT release, calibrator version, settings).</dd></div>
+    </dl>
   </div>
 </section>
 
-<section class="sec" id="product">
+<section class="sec" id="how">
   <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">What you get</p>
-      <h2>Structured, coded data from every clinical statement</h2>
-      <p class="sub">Every result passes an independent verification step before it is released, and its confidence is calibrated, so a score of 90 means right about nine times in ten.</p>
-    </div>
-    <div class="cards">
-      <article class="card">
-        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 6 3 12l5 6M16 6l5 6-5 6M13.5 4l-3 16"/></svg></div>
-        <h3>Coded output</h3>
-        <p>A SNOMED CT concept for every statement; ICD-10 (UK) with OPCS-4, or ICD-10-CM (US); and the UMLS CUI.</p>
-      </article>
-      <article class="card">
-        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
-        <h3>Broad coverage</h3>
-        <p>13 core semantic types, 16 report-specialised types across radiology, pathology, cytology, endoscopy, cardiology, respiratory, neurophysiology, nuclear medicine and genomics, plus your own custom types.</p>
-      </article>
-      <article class="card">
-        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 18a8 8 0 1 1 16 0"/><path d="m12 18 4-6"/><circle cx="12" cy="18" r="1.2"/></svg></div>
-        <h3>Calibrated confidence</h3>
-        <p>Two calibrated scores per statement: the probability it is correct, and the probability it is correct or debatable.</p>
-      </article>
-      <article class="card">
-        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.5 3.1 8 7.5 9.5 4.4-1.500 7.5-5 7.5-9.500V6L12 3Z"/><path d="m8.800 12 2.300 2.300 4.200-4.500"/></svg></div>
-        <h3>Independent verification</h3>
-        <p>Each statement is re-checked against its source text and low-scoring diagnoses are retried before anything is released.</p>
-      </article>
-      <article class="card">
-        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg></div>
-        <h3>Full traceability</h3>
-        <p>Every result carries its document, section and position, a readable sentence restating it, and a provenance stamp: SNOMED CT release, calibrator version and settings.</p>
-      </article>
-      <article class="card">
-        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="1.500"/><rect x="3" y="14" width="18" height="6" rx="1.500"/><path d="M7 7h.01M7 17h.01"/></svg></div>
-        <h3>Self-hosted</h3>
-        <p>Runs on a single GPU server. Two model sizes: Large, with calibrated confidence, and Medium, for GPUs with less memory. Whole episodes of care are processed document by document.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="sec sec-alt" id="how">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">How it works</p>
-      <h2>Five layers, from document to coded episode</h2>
-    </div>
-    <ol class="steps">
-      <li><span class="num">1</span><h3>Chunking</h3><p>Splits each document into sections and recognises tables, lists and structured blocks.</p></li>
-      <li><span class="num">2</span><h3>Extraction</h3><p>A two-pass extractor finds each clinical statement, then fills its type-specific details. Tables and structured content are parsed deterministically.</p></li>
-      <li><span class="num">3</span><h3>Normalisation</h3><p>Three biomedical encoders and a learned reranker propose SNOMED CT candidates; a language model selects the concept. Medications are resolved against RxNorm, and ICD-10 / OPCS-4 codes follow from the official maps.</p></li>
-      <li><span class="num">4</span><h3>Verification</h3><p>Each statement is re-checked against its source text, low-scoring diagnoses are retried, and a trained calibrator turns the evidence into a 0–100 confidence.</p></li>
-      <li><span class="num">5</span><h3>Coding episodes</h3><p>Optionally assembles the verified statements into a coded episode of care.</p></li>
+    <h2>How it works</h2>
+    <ol class="layers">
+      <li><span class="n">1</span><h3>Chunking</h3><p>Splits each document into sections and recognises tables, lists and structured blocks.</p></li>
+      <li><span class="n">2</span><h3>Extraction</h3><p>A two-pass extractor finds each clinical statement, then fills its type-specific details. Tables and structured content are parsed deterministically.</p></li>
+      <li><span class="n">3</span><h3>Normalisation</h3><p>Three biomedical encoders and a learned reranker propose SNOMED CT candidates; a language model selects the concept. Medications are resolved against RxNorm, and ICD-10 / OPCS-4 codes follow from the official maps.</p></li>
+      <li><span class="n">4</span><h3>Verification</h3><p>Each statement is re-checked against its source text, low-scoring diagnoses are retried, and a trained calibrator turns the evidence into a 0–100 confidence.</p></li>
+      <li><span class="n">5</span><h3>Coding episodes</h3><p>Optionally assembles the verified statements into a coded episode of care.</p></li>
     </ol>
   </div>
 </section>
 
-<section class="sec" id="evidence">
+<section class="sec" id="coverage">
   <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Evidence</p>
-      <h2>Finds more documented conditions than professional coders</h2>
-      <p class="sub">On real hospital admissions C-NOTE found more of the documented conditions than professional clinical coders did, with comparable accuracy.</p>
-    </div>
+    <h2>What C-NOTE extracts</h2>
+    <p class="intro">Every statement carries five universal modifiers: polarity, temporality, certainty, experiencer and conditionality<sup>†</sup>. Its main concept is always coded to SNOMED CT.</p>
+    <table class="tbl types">
+      <thead><tr><th scope="col">Semantic type</th><th scope="col">Type-specific parameters</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Disease</th><td>diagnostic status<sup>†</sup> (affirmed, suspected, ruled out, absent, resolved) · body sites<sup>*</sup> · laterality<sup>*†</sup> · TNM stage · tumour grade · invasive size · residual cancer burden · histology subtype · metastatic sites<sup>*†</sup> (each coded as its own secondary-neoplasm concept)</td></tr>
+        <tr><th scope="row">Symptom</th><td>status<sup>†</sup> (present, denied, resolved, improving, worsening, historical, anticipated) · severity<sup>*†</sup> · body sites<sup>*</sup> · laterality<sup>*†</sup></td></tr>
+        <tr><th scope="row">Finding</th><td>status<sup>†</sup> (abnormal, normal, absent) · severity<sup>*†</sup> · course<sup>†</sup> (improved, worsened, resolved…) · body sites<sup>*</sup> · laterality<sup>*†</sup> · value + unit<sup>†</sup></td></tr>
+        <tr><th scope="row">Injury</th><td>status<sup>†</sup> (sustained, denied) · body sites<sup>*</sup> · laterality<sup>*†</sup></td></tr>
+        <tr><th scope="row">Allergy</th><td>status<sup>†</sup> (active, no known allergy, resolved, suspected) · allergen class<sup>†</sup> (medication, food, environmental)</td></tr>
+        <tr><th scope="row">Medication</th><td>lifecycle<sup>†</sup> (taking, administered, taken, planned, held, not taking) · strength · dose · form · frequency · route · indication</td></tr>
+        <tr><th scope="row">Procedure</th><td>lifecycle<sup>†</sup> (performed, ordered, not performed, declined) · body sites<sup>*</sup> · laterality<sup>*†</sup> · indication · radiotherapy dose and fractions · lymph nodes examined / positive</td></tr>
+        <tr><th scope="row">Laboratory test</th><td>performed / ordered<sup>†</sup> · value + unit<sup>†</sup> · qualitative result<sup>†</sup> · trend<sup>†</sup> · specimen site<sup>*</sup> · laterality<sup>*†</sup> · purpose</td></tr>
+        <tr><th scope="row">Device</th><td>presence<sup>†</sup> · body sites<sup>*</sup> · laterality<sup>*†</sup></td></tr>
+        <tr><th scope="row">Social history</th><td>status<sup>†</sup> (current, former, never) · subtype<sup>†</sup> (alcohol, tobacco, drug, employment, living) · quantity (value + unit)<sup>†</sup> · experiencer<sup>†</sup></td></tr>
+        <tr><th scope="row">Genetic</th><td>presence, timing, certainty and experiencer<sup>†</sup> (patient or family member)</td></tr>
+        <tr><th scope="row">Oncology detail</th><td>TNM stage · grade and score breakdown · invasive and in-situ size · histology · margin status and distance · lymphovascular invasion · microinvasion · necrosis · nodes examined / positive · biomarker name, IHC and Allred scores, percentage, FISH ratio, copy number, clone · body sites<sup>*</sup> · laterality<sup>*†</sup></td></tr>
+        <tr><th scope="row">Instruction</th><td>status<sup>†</sup> (given, carried out, withheld) · purpose</td></tr>
+      </tbody>
+    </table>
+    <p class="note"><sup>*</sup> value maps to a SNOMED CT concept (body structure or qualifier value). <sup>†</sup> returned as structured data: a fixed value set, a number with its unit, or a list. Report-specialised types (for example imaging finding, pathology tumour, biomarker, genomic variant) add report-specific fields such as breast density or margin status.</p>
+  </div>
+</section>
+
+<section class="sec" id="evaluation">
+  <div class="wrap">
+    <h2>Evaluation against clinical coders</h2>
+    <p class="intro">On real hospital admissions C-NOTE found more of the documented conditions than professional clinical coders did, with comparable accuracy.</p>
     <div class="split">
-      <figure class="chart-card">
+      <figure class="fig">
         <div class="legend"><span><i class="sw sw-a"></i>C-NOTE</span><span><i class="sw sw-b"></i>The other human coder set</span></div>
         <svg class="chart chart-bar" viewBox="0 0 520 392" role="img" aria-labelledby="bar-t bar-d">
 <title id="bar-t">Share of documented conditions found, C-NOTE against human coders</title>
@@ -198,35 +166,20 @@
         <figcaption>Share of one human set's conditions that the other source also recorded. Error bars are 95% patient-clustered bootstrap intervals.</figcaption>
       </figure>
       <div class="prose">
-        <div class="kpis">
-          <div><b>+14 pts</b><span>lead on the expert annotators' conditions (95% CI +10 to +18)</span></div>
-          <div><b>+12 pts</b><span>lead on the hospital coders' conditions (95% CI +7 to +17)</span></div>
-        </div>
         <h3>How this was measured</h3>
         <p>The 61 hospital admissions of the published MDACE Inpatient test set (MIMIC-III, 616 expert-annotated diagnoses) carry two independent sets of human codes: the MDACE expert annotators' evidence-linked ICD-10-CM codes and the hospital's original clinical coding.</p>
         <p>Identical codes or concepts matched automatically. Every other difference was put to a panel of large language models (GPT-5.6 and DeepSeek-V4-Pro, with Claude Opus 5 settling their disagreements) with passages from the notes, under the same rules for C-NOTE and for both human sets.</p>
-        <p>Accuracy is comparable: 90% of C-NOTE's conditions were correct in every detail, against 92% for the MDACE annotators and 86% for the hospital coders. C-NOTE was never trained on MIMIC-III.</p>
-        <p class="note">The verdicts are model-adjudicated, not reviewed by a person.</p>
+        <p>C-NOTE's lead is +14 points (95% CI +10 to +18) on the expert annotators' conditions and +12 points (+7 to +17) on the hospital coders' conditions. Accuracy is comparable: 90% of C-NOTE's conditions were correct in every detail, against 92% for the MDACE annotators and 86% for the hospital coders.</p>
+        <p>C-NOTE was never trained on MIMIC-III. The verdicts are model-adjudicated, not reviewed by a person.</p>
       </div>
     </div>
-  </div>
-</section>
 
-<section class="sec sec-alt" id="confidence">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Confidence</p>
-      <h2>One threshold trades recall for precision</h2>
-      <p class="sub">Each statement carries a calibrated confidence from 0 to 100. Set a recall-favoured threshold for coder assistance and a stricter one for automated feeds.</p>
-    </div>
-    <div class="chart-card tradeoff">
-      <div class="readouts" aria-live="polite">
-        <div class="ro ro-t"><span>Confidence threshold</span><b id="ro-t">40</b></div>
-        <div class="ro ro-p"><span><i class="sw sw-a"></i>Precision</span><b id="ro-p">94%</b></div>
-        <div class="ro ro-r"><span><i class="sw sw-b"></i>Recall</span><b id="ro-r">90%</b></div>
-        <div class="ro ro-k"><span><i class="sw sw-c"></i>Conditions kept</span><b id="ro-k">80%</b></div>
-      </div>
-      <svg class="chart chart-curve" viewBox="0 0 640 340" role="img" aria-labelledby="cv-t cv-d">
+    <h3 class="sub" id="confidence">Confidence threshold</h3>
+    <p class="intro">Each statement carries a calibrated confidence from 0 to 100, and one threshold trades recall for precision: for example a recall-favoured setting for coder assistance and a stricter one for automated feeds.</p>
+    <div class="split">
+      <figure class="fig">
+        <div class="legend"><span><i class="sw sw-a"></i>Precision</span><span><i class="sw sw-r"></i>Recall</span><span><i class="sw sw-k"></i>Conditions kept</span></div>
+        <svg class="chart chart-curve" viewBox="0 0 640 340" role="img" aria-labelledby="cv-t cv-d">
 <title id="cv-t">Precision, recall and share of conditions kept by confidence threshold</title>
 <desc id="cv-d">Precision rises from 90% to 96% as the threshold rises from 0 to 85, while recall falls from 95% to 79% and the share of conditions kept falls from 100% to 56%. The table below gives the values.</desc>
 <line class="axis" x1="72" x2="630" y1="276.0" y2="276.0"/>
@@ -249,126 +202,95 @@
 <text class="marklabel" x="291.5" y="268.0" text-anchor="end">coder aid (40)</text>
 <line class="mark" x1="551.1" x2="551.1" y1="16" y2="276.0"/>
 <text class="marklabel" x="545.1" y="268.0" text-anchor="end">automated (85)</text>
-<polyline class="line line-c" points="72.0,16.0 77.6,26.2 83.3,26.2 88.9,29.7 94.5,30.8 100.2,33.3 105.8,33.5 111.5,34.0 117.1,37.2 122.7,37.2 128.4,39.3 134.0,39.3 139.6,39.3 145.3,42.1 150.9,44.9 156.5,45.0 162.2,45.0 167.8,45.0 173.5,50.0 179.1,50.0 184.7,50.0 190.4,50.0 196.0,50.0 201.6,55.6 207.3,56.8 212.9,58.8 218.5,58.8 224.2,58.8 229.8,58.8 235.5,58.8 241.1,58.8 246.7,58.8 252.4,60.8 258.0,63.0 263.6,64.9 269.3,66.1 274.9,66.1 280.5,66.1 286.2,68.0 291.8,68.0 297.5,68.0 303.1,68.0 308.7,68.1 314.4,69.3 320.0,69.3 325.6,70.0 331.3,74.2 336.9,74.2 342.5,80.2 348.2,80.2 353.8,81.7 359.5,82.2 365.1,85.3 370.7,85.3 376.4,85.3 382.0,85.3 387.6,85.3 393.3,85.3 398.9,85.3 404.5,92.5 410.2,92.5 415.8,92.5 421.5,92.5 427.1,92.5 432.7,99.1 438.4,100.3 444.0,100.3 449.6,101.1 455.3,101.1 460.9,103.0 466.5,103.0 472.2,103.0 477.8,107.6 483.5,107.6 489.1,107.6 494.7,107.6 500.4,114.5 506.0,116.0 511.6,116.0 517.3,117.8 522.9,117.8 528.5,119.7 534.2,127.0 539.8,127.0 545.5,127.4 551.1,130.7 556.7,142.1 562.4,142.1 568.0,146.6 573.6,152.2 579.3,159.8 584.9,160.5 590.5,165.7 596.2,181.9 601.8,186.5 607.5,193.0 613.1,193.0 618.7,207.2 624.4,210.6 630.0,242.7"/>
-<polyline class="line line-b" points="72.0,29.6 77.6,30.8 83.3,30.8 88.9,31.4 94.5,31.8 100.2,32.4 105.8,32.4 111.5,32.6 117.1,33.6 122.7,33.6 128.4,33.6 134.0,33.6 139.6,33.6 145.3,33.8 150.9,34.4 156.5,34.4 162.2,34.4 167.8,34.4 173.5,35.8 179.1,35.8 184.7,35.8 190.4,35.8 196.0,35.8 201.6,37.7 207.3,38.1 212.9,39.1 218.5,39.1 224.2,39.1 229.8,39.1 235.5,39.1 241.1,39.1 246.7,39.1 252.4,40.3 258.0,40.9 263.6,41.5 269.3,42.3 274.9,42.3 280.5,42.3 286.2,42.5 291.8,42.5 297.5,42.5 303.1,42.5 308.7,42.5 314.4,42.9 320.0,42.9 325.6,43.1 331.3,45.9 336.9,45.9 342.5,49.3 348.2,49.3 353.8,49.7 359.5,49.9 365.1,50.5 370.7,50.5 376.4,50.5 382.0,50.5 387.6,50.5 393.3,50.5 398.9,50.5 404.5,53.9 410.2,53.9 415.8,53.9 421.5,53.9 427.1,53.9 432.7,58.3 438.4,58.7 444.0,58.7 449.6,58.9 455.3,58.9 460.9,59.9 466.5,59.9 472.2,59.9 477.8,62.5 483.5,62.5 489.1,62.5 494.7,62.5 500.4,65.3 506.0,65.5 511.6,65.5 517.3,66.3 522.9,66.3 528.5,67.5 534.2,69.9 539.8,69.9 545.5,69.9 551.1,70.7 556.7,78.5 562.4,78.5 568.0,81.4 573.6,85.0 579.3,92.4 584.9,93.0 590.5,96.6 596.2,108.4 601.8,110.0 607.5,117.4 613.1,117.4 618.7,132.9 624.4,137.3 630.0,183.0"/>
+<polyline class="line line-k" points="72.0,16.0 77.6,26.2 83.3,26.2 88.9,29.7 94.5,30.8 100.2,33.3 105.8,33.5 111.5,34.0 117.1,37.2 122.7,37.2 128.4,39.3 134.0,39.3 139.6,39.3 145.3,42.1 150.9,44.9 156.5,45.0 162.2,45.0 167.8,45.0 173.5,50.0 179.1,50.0 184.7,50.0 190.4,50.0 196.0,50.0 201.6,55.6 207.3,56.8 212.9,58.8 218.5,58.8 224.2,58.8 229.8,58.8 235.5,58.8 241.1,58.8 246.7,58.8 252.4,60.8 258.0,63.0 263.6,64.9 269.3,66.1 274.9,66.1 280.5,66.1 286.2,68.0 291.8,68.0 297.5,68.0 303.1,68.0 308.7,68.1 314.4,69.3 320.0,69.3 325.6,70.0 331.3,74.2 336.9,74.2 342.5,80.2 348.2,80.2 353.8,81.7 359.5,82.2 365.1,85.3 370.7,85.3 376.4,85.3 382.0,85.3 387.6,85.3 393.3,85.3 398.9,85.3 404.5,92.5 410.2,92.5 415.8,92.5 421.5,92.5 427.1,92.5 432.7,99.1 438.4,100.3 444.0,100.3 449.6,101.1 455.3,101.1 460.9,103.0 466.5,103.0 472.2,103.0 477.8,107.6 483.5,107.6 489.1,107.6 494.7,107.6 500.4,114.5 506.0,116.0 511.6,116.0 517.3,117.8 522.9,117.8 528.5,119.7 534.2,127.0 539.8,127.0 545.5,127.4 551.1,130.7 556.7,142.1 562.4,142.1 568.0,146.6 573.6,152.2 579.3,159.8 584.9,160.5 590.5,165.7 596.2,181.9 601.8,186.5 607.5,193.0 613.1,193.0 618.7,207.2 624.4,210.6 630.0,242.7"/>
+<polyline class="line line-r" points="72.0,29.6 77.6,30.8 83.3,30.8 88.9,31.4 94.5,31.8 100.2,32.4 105.8,32.4 111.5,32.6 117.1,33.6 122.7,33.6 128.4,33.6 134.0,33.6 139.6,33.6 145.3,33.8 150.9,34.4 156.5,34.4 162.2,34.4 167.8,34.4 173.5,35.8 179.1,35.8 184.7,35.8 190.4,35.8 196.0,35.8 201.6,37.7 207.3,38.1 212.9,39.1 218.5,39.1 224.2,39.1 229.8,39.1 235.5,39.1 241.1,39.1 246.7,39.1 252.4,40.3 258.0,40.9 263.6,41.5 269.3,42.3 274.9,42.3 280.5,42.3 286.2,42.5 291.8,42.5 297.5,42.5 303.1,42.5 308.7,42.5 314.4,42.9 320.0,42.9 325.6,43.1 331.3,45.9 336.9,45.9 342.5,49.3 348.2,49.3 353.8,49.7 359.5,49.9 365.1,50.5 370.7,50.5 376.4,50.5 382.0,50.5 387.6,50.5 393.3,50.5 398.9,50.5 404.5,53.9 410.2,53.9 415.8,53.9 421.5,53.9 427.1,53.9 432.7,58.3 438.4,58.7 444.0,58.7 449.6,58.9 455.3,58.9 460.9,59.9 466.5,59.9 472.2,59.9 477.8,62.5 483.5,62.5 489.1,62.5 494.7,62.5 500.4,65.3 506.0,65.5 511.6,65.5 517.3,66.3 522.9,66.3 528.5,67.5 534.2,69.9 539.8,69.9 545.5,69.9 551.1,70.7 556.7,78.5 562.4,78.5 568.0,81.4 573.6,85.0 579.3,92.4 584.9,93.0 590.5,96.6 596.2,108.4 601.8,110.0 607.5,117.4 613.1,117.4 618.7,132.9 624.4,137.3 630.0,183.0"/>
 <polyline class="line line-a" points="72.0,42.5 77.6,41.0 83.3,41.0 88.9,40.8 94.5,40.5 100.2,39.9 105.8,39.9 111.5,39.8 117.1,39.2 122.7,39.2 128.4,38.4 134.0,38.4 139.6,38.4 145.3,37.8 150.9,37.3 156.5,37.3 162.2,37.3 167.8,37.3 173.5,35.9 179.1,35.9 184.7,35.9 190.4,35.9 196.0,35.9 201.6,34.8 207.3,34.5 212.9,34.2 218.5,34.2 224.2,34.2 229.8,34.2 235.5,34.2 241.1,34.2 246.7,34.2 252.4,33.8 258.0,33.5 263.6,33.1 269.3,32.9 274.9,32.9 280.5,32.9 286.2,32.5 291.8,32.5 297.5,32.5 303.1,32.5 308.7,32.5 314.4,32.5 320.0,32.5 325.6,32.5 331.3,32.3 336.9,32.3 342.5,32.3 348.2,32.3 353.8,32.1 359.5,32.1 365.1,31.7 370.7,31.7 376.4,31.7 382.0,31.7 387.6,31.7 393.3,31.7 398.9,31.7 404.5,31.4 410.2,31.4 415.8,31.4 421.5,31.4 427.1,31.4 432.7,30.8 438.4,30.8 444.0,30.8 449.6,30.7 455.3,30.7 460.9,30.3 466.5,30.3 472.2,30.3 477.8,29.7 483.5,29.7 489.1,29.7 494.7,29.7 500.4,28.1 506.0,28.0 511.6,28.0 517.3,27.9 522.9,27.9 528.5,27.7 534.2,27.6 539.8,27.6 545.5,27.4 551.1,27.4 556.7,26.4 562.4,26.4 568.0,26.3 573.6,25.8 579.3,25.2 584.9,25.0 590.5,24.6 596.2,22.2 601.8,21.7 607.5,20.5 613.1,20.5 618.7,19.3 624.4,19.0 630.0,17.2"/>
-<g id="cur"><line class="cursor" x1="0" x2="0" y1="16" y2="276.0"/><circle id="dk" class="dot dot-c" r="5.5" cx="0" cy="0"/><circle id="dr" class="dot dot-b" r="5.5" cx="0" cy="0"/><circle id="dp" class="dot dot-a" r="5.5" cx="0" cy="0"/></g>
+<circle class="dot dot-k" r="5" cx="297.5" cy="68.0"/>
+<circle class="dot dot-r" r="5" cx="297.5" cy="42.5"/>
+<circle class="dot dot-a" r="5" cx="297.5" cy="32.5"/>
+<circle class="dot dot-k" r="5" cx="551.1" cy="130.7"/>
+<circle class="dot dot-r" r="5" cx="551.1" cy="70.7"/>
+<circle class="dot dot-a" r="5" cx="551.1" cy="27.4"/>
 </svg>
-      <div class="slider-row">
-        <label for="thr">Drag to set the threshold</label>
-        <input id="thr" type="range" min="0" max="99" step="1" value="40">
-        <div class="presets" role="group" aria-label="Threshold presets">
-          <button type="button" data-t="0">0 · keep everything</button>
-          <button type="button" data-t="40">40 · coder aid</button>
-          <button type="button" data-t="85">85 · automated</button>
-          <button type="button" data-t="95">95</button>
-        </div>
+      </figure>
+      <div>
+        <table class="tbl nums">
+          <thead><tr><th scope="col">Threshold</th><th scope="col">Precision</th><th scope="col">Recall</th><th scope="col">Kept</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">0 <small>keep everything</small></th><td>90%</td><td>95%</td><td>100%</td></tr>
+            <tr><th scope="row">40 <small>coder aid</small></th><td>94%</td><td>90%</td><td>80%</td></tr>
+            <tr><th scope="row">85 <small>automated</small></th><td>96%</td><td>79%</td><td>56%</td></tr>
+            <tr><th scope="row">95</th><td>98%</td><td>61%</td><td>32%</td></tr>
+          </tbody>
+        </table>
+        <p class="note">A condition is kept when any statement supporting it reaches the threshold. Precision is the share of kept conditions judged correct as documented; recall is the share of the expert-annotated conditions documented in the notes that C-NOTE still finds. Measured on both MDACE sets (87 admissions) with the same model-adjudicated labels as above. Raising the threshold from 0 to 85 lifts precision from 90% to 96% and cuts the list to review by 44%, at the cost of 16 points of recall.</p>
       </div>
     </div>
-    <div class="table-wrap">
-      <table class="tbl">
-        <thead><tr><th scope="col">Confidence threshold</th><th scope="col">Precision <small>correct as documented</small></th><th scope="col">Recall <small>expert-annotated conditions</small></th><th scope="col">Conditions kept</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">0 <small>keep everything</small></th><td>90%</td><td>95%</td><td>100%</td></tr>
-          <tr><th scope="row">40 <small>coder aid</small></th><td>94%</td><td>90%</td><td>80%</td></tr>
-          <tr><th scope="row">85 <small>automated</small></th><td>96%</td><td>79%</td><td>56%</td></tr>
-          <tr><th scope="row">95</th><td>98%</td><td>61%</td><td>32%</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="note wide">A condition is kept when any statement supporting it reaches the threshold. Precision is the share of kept conditions judged correct as documented; recall is the share of the expert-annotated conditions documented in the notes that C-NOTE still finds. Measured on both MDACE sets (87 admissions) with the same model-adjudicated labels as above. Raising the threshold from 0 to 85 lifts precision from 90% to 96% and cuts the list to review by 44%, at the cost of 16 points of recall; choose the setting per use.</p>
   </div>
 </section>
 
 <section class="sec" id="speed">
   <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Speed and cost</p>
-      <h2>About 25,000 words per GPU-hour</h2>
-      <p class="sub">Batch mode on one NVIDIA H100 GPU (80 GB), full pipeline including coding-episode assembly.</p>
-    </div>
-    <div class="split split-rev">
-      <div class="facts">
-        <div class="fact"><b>≈130 s</b><span>per 1,000 words</span></div>
-        <div class="fact"><b>≈1.3</b><span>statements per second</span></div>
-        <div class="fact"><b>≈$0.15</b><span>of GPU time per 1,000 words (one H100 at $3.70/hour)</span></div>
-        <div class="fact"><b>2.6 s · 3.1 s · 0.8 s</b><span>median model latency per request for extraction, concept selection and verification, with many requests in flight at once</span></div>
+    <h2>Speed and cost</h2>
+    <p class="intro">An extraction is one verified, coded clinical statement. Measured in batch mode on one NVIDIA H100 GPU (80 GB), running the full pipeline including coding-episode assembly.</p>
+    <div class="split">
+      <div>
+        <div class="headline">
+          <div><b>≈4,200</b><span>extractions per GPU-hour, including start-up</span></div>
+          <div><b>≈$0.88</b><span>of GPU time per 1,000 extractions (one H100 at $3.70/hour)</span></div>
+        </div>
+        <dl class="spec spec-tight">
+          <div><dt>Once running</dt><dd>≈1.3 extractions per second (≈4,700 per hour)</dd></div>
+          <div><dt>Workload</dt><dd>87 hospital admissions, 51,125 extractions from 303,164 words (MDACE Inpatient and professional-fee sets)</dd></div>
+          <div><dt>By volume of text</dt><dd>≈130 s and ≈$0.15 of GPU time per 1,000 words</dd></div>
+          <div><dt>Model latency (median)</dt><dd>extraction 2.6 s · concept selection 3.1 s · verification 0.8 s per request, with many requests in flight at once</dd></div>
+        </dl>
       </div>
-      <figure class="chart-card">
-        <h3 class="chart-title">Seconds of GPU time per 1,000 words, by layer</h3>
+      <figure class="fig">
+        <h3 class="fig-title">Seconds of GPU time per 1,000 extractions, by layer</h3>
         <dl class="hbars">
-<div><dt>1 · Chunking</dt><dd><span class="hbar" style="--w:2.0%"></span><b>1 s</b></dd></div>
-<div><dt>2 · Extraction</dt><dd><span class="hbar" style="--w:44.2%"></span><b>30 s</b></dd></div>
-<div><dt>3 · SNOMED CT normalisation</dt><dd><span class="hbar" style="--w:100.0%"></span><b>68 s</b></dd></div>
-<div><dt>4 · Verification and confidence</dt><dd><span class="hbar" style="--w:34.4%"></span><b>23 s</b></dd></div>
-<div><dt>5 · Coding-episode assembly</dt><dd><span class="hbar" style="--w:10.3%"></span><b>7 s</b></dd></div>
+<div><dt>1 · Chunking</dt><dd><span class="hbar" style="--w:2.0%"></span><b>8 s</b></dd></div>
+<div><dt>2 · Extraction</dt><dd><span class="hbar" style="--w:44.2%"></span><b>178 s</b></dd></div>
+<div><dt>3 · SNOMED CT normalisation</dt><dd><span class="hbar" style="--w:100.0%"></span><b>404 s</b></dd></div>
+<div><dt>4 · Verification and confidence</dt><dd><span class="hbar" style="--w:34.4%"></span><b>139 s</b></dd></div>
+<div><dt>5 · Coding-episode assembly</dt><dd><span class="hbar" style="--w:10.3%"></span><b>42 s</b></dd></div>
 </dl>
-        <figcaption>Measured on 87 hospital admissions: 303,164 words and 51,125 clinical statements (MDACE Inpatient and professional-fee sets). SNOMED CT normalisation is the largest share of the work; the coding layer can be switched off when only SNOMED CT output is needed.</figcaption>
+        <figcaption>SNOMED CT normalisation is the largest share of the work. The coding layer can be switched off when only SNOMED CT output is needed.</figcaption>
       </figure>
     </div>
   </div>
 </section>
 
-<section class="sec sec-alt" id="coverage">
+<section class="sec" id="configuration">
   <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Coverage</p>
-      <h2>What C-NOTE extracts</h2>
-      <p class="sub">Every statement carries five universal modifiers: polarity, temporality, certainty, experiencer and conditionality<sup>†</sup>. Its main concept is always coded to SNOMED CT.</p>
-    </div>
-    <div class="types">
-      <article class="type-card type-wide"><h3>Disease</h3><ul class="chips"><li>diagnostic status<sup>†</sup> <em>affirmed, suspected, ruled out, absent, resolved</em></li><li>body sites<sup>*</sup></li><li>laterality<sup>*†</sup></li><li>TNM stage</li><li>tumour grade</li><li>invasive size</li><li>residual cancer burden</li><li>histology subtype</li><li>metastatic sites<sup>*†</sup> <em>each coded as its own secondary-neoplasm concept</em></li></ul></article>
-      <article class="type-card"><h3>Symptom</h3><ul class="chips"><li>status<sup>†</sup> <em>present, denied, resolved, improving, worsening, historical, anticipated</em></li><li>severity<sup>*†</sup></li><li>body sites<sup>*</sup></li><li>laterality<sup>*†</sup></li></ul></article>
-      <article class="type-card"><h3>Finding</h3><ul class="chips"><li>status<sup>†</sup> <em>abnormal, normal, absent</em></li><li>severity<sup>*†</sup></li><li>course<sup>†</sup> <em>improved, worsened, resolved…</em></li><li>body sites<sup>*</sup></li><li>laterality<sup>*†</sup></li><li>value + unit<sup>†</sup></li></ul></article>
-      <article class="type-card"><h3>Injury</h3><ul class="chips"><li>status<sup>†</sup> <em>sustained, denied</em></li><li>body sites<sup>*</sup></li><li>laterality<sup>*†</sup></li></ul></article>
-      <article class="type-card"><h3>Allergy</h3><ul class="chips"><li>status<sup>†</sup> <em>active, no known allergy, resolved, suspected</em></li><li>allergen class<sup>†</sup> <em>medication, food, environmental</em></li></ul></article>
-      <article class="type-card"><h3>Medication</h3><ul class="chips"><li>lifecycle<sup>†</sup> <em>taking, administered, taken, planned, held, not taking</em></li><li>strength</li><li>dose</li><li>form</li><li>frequency</li><li>route</li><li>indication</li></ul></article>
-      <article class="type-card"><h3>Procedure</h3><ul class="chips"><li>lifecycle<sup>†</sup> <em>performed, ordered, not performed, declined</em></li><li>body sites<sup>*</sup></li><li>laterality<sup>*†</sup></li><li>indication</li><li>radiotherapy dose and fractions</li><li>lymph nodes examined / positive</li></ul></article>
-      <article class="type-card"><h3>Laboratory test</h3><ul class="chips"><li>performed / ordered<sup>†</sup></li><li>value + unit<sup>†</sup></li><li>qualitative result<sup>†</sup></li><li>trend<sup>†</sup></li><li>specimen site<sup>*</sup></li><li>laterality<sup>*†</sup></li><li>purpose</li></ul></article>
-      <article class="type-card"><h3>Device</h3><ul class="chips"><li>presence<sup>†</sup></li><li>body sites<sup>*</sup></li><li>laterality<sup>*†</sup></li></ul></article>
-      <article class="type-card"><h3>Social history</h3><ul class="chips"><li>status<sup>†</sup> <em>current, former, never</em></li><li>subtype<sup>†</sup> <em>alcohol, tobacco, drug, employment, living</em></li><li>quantity (value + unit)<sup>†</sup></li><li>experiencer<sup>†</sup></li></ul></article>
-      <article class="type-card"><h3>Genetic</h3><ul class="chips"><li>presence, timing, certainty and experiencer<sup>†</sup> <em>patient or family member</em></li></ul></article>
-      <article class="type-card type-wide"><h3>Oncology detail</h3><ul class="chips"><li>TNM stage</li><li>grade and score breakdown</li><li>invasive and in-situ size</li><li>histology</li><li>margin status and distance</li><li>lymphovascular invasion</li><li>microinvasion</li><li>necrosis</li><li>nodes examined / positive</li><li>biomarker name, IHC and Allred scores, percentage, FISH ratio, copy number, clone</li><li>body sites<sup>*</sup></li><li>laterality<sup>*†</sup></li></ul></article>
-      <article class="type-card"><h3>Instruction</h3><ul class="chips"><li>status<sup>†</sup> <em>given, carried out, withheld</em></li><li>purpose</li></ul></article>
-    </div>
-    <p class="note wide"><sup>*</sup> value maps to a SNOMED CT concept (body structure or qualifier value). <sup>†</sup> returned as structured data: a fixed value set, a number with its unit, or a list. Report-specialised types (for example imaging finding, pathology tumour, biomarker, genomic variant) add report-specific fields such as breast density or margin status.</p>
-  </div>
-</section>
-
-<section class="sec" id="deployment">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Deployment</p>
-      <h2>Built to be configured. Output you can use directly.</h2>
-    </div>
-    <div class="duo">
-      <article class="panel">
-        <h3>Adapts without retraining</h3>
-        <ul class="ticks">
-          <li><strong>Custom semantic types in a short YAML file:</strong> their parameters and value sets, whether they are coded to SNOMED CT and ICD-10 or OPCS-4, which report types and sections they apply to, and a few worked examples. They then flow through extraction, coding and output like the built-in types.</li>
-          <li><strong>Scoped settings</strong> by document type, section or semantic type: switch types on or off, deduplicate at document or visit level, and turn code mapping on or off.</li>
-          <li><strong>Restrict or prioritise concepts</strong> with SNOMED CT Expression Constraint Language to match a registry or value set.</li>
-          <li><strong>UK or US code system:</strong> ICD-10 with OPCS-4, or ICD-10-CM.</li>
-          <li><strong>Your hardware, your thresholds:</strong> pick the model size that fits, and set your own confidence thresholds per use.</li>
+    <h2>Configuration and output</h2>
+    <div class="split">
+      <div class="prose">
+        <h3>Built to be configured</h3>
+        <p>C-NOTE adapts to your documents and your downstream use without retraining.</p>
+        <ul>
+          <li>New semantic types can be defined in a short YAML file: their parameters and value sets, whether they are coded to SNOMED CT and ICD-10 or OPCS-4, which report types and sections they apply to, and a few worked examples. They then flow through extraction, coding and output like the built-in types.</li>
+          <li>Settings can be scoped by document type, section or semantic type: switch types on or off, deduplicate at document or visit level, and turn code mapping on or off.</li>
+          <li>Concepts can be restricted or prioritised with SNOMED CT Expression Constraint Language to match a registry or value set.</li>
+          <li>Choose the UK (ICD-10 with OPCS-4) or US (ICD-10-CM) code system, pick the model size that fits your hardware, and set your own confidence thresholds.</li>
         </ul>
-      </article>
-      <article class="panel">
-        <h3>Loads straight into your warehouse</h3>
-        <ul class="ticks">
-          <li><strong>Relational tables, one per semantic type,</strong> with numeric values and units in their own linked table, ready for a warehouse, registry or research database.</li>
-          <li><strong>Every row carries</strong> the SNOMED CT, ICD-10 and OPCS-4 codes, both confidence scores, its source document and section, and the verification decision.</li>
-          <li><strong>Every run records</strong> the terminology release, calibrator version and settings that produced it.</li>
+      </div>
+      <div class="prose">
+        <h3>Output you can use directly</h3>
+        <p>Results are written to relational tables, one per semantic type, with numeric values and units in their own linked table, so they load straight into a warehouse, registry or research database.</p>
+        <ul>
+          <li>Each row carries the SNOMED CT, ICD-10 and OPCS-4 codes, both confidence scores, its source document and section, and the verification decision.</li>
+          <li>Every run records the terminology release, calibrator version and settings that produced it.</li>
         </ul>
-      </article>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="cta" id="contact">
-  <div class="wrap cta-in">
-    <h2>See what C-NOTE finds in your documents</h2>
-    <p>Tell us about your documents and what you need from them.</p>
-    <a class="btn btn-light btn-lg" href="mailto:enquiries@cnote.co.uk">enquiries@cnote.co.uk</a>
+<section class="sec" id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p class="intro">For enquiries about C-NOTE, email <a href="mailto:enquiries@cnote.co.uk">enquiries@cnote.co.uk</a>. We are on GitHub at <a href="https://github.com/Cnote-Healthtech">github.com/Cnote-Healthtech</a>.</p>
   </div>
 </section>
 
@@ -376,49 +298,9 @@
 
 <footer class="foot">
   <div class="wrap foot-in">
-    <div>
-      <a class="brand" href="#top" aria-label="Back to top">
-        <svg class="brand-mark" viewBox="357 120 776 787" aria-hidden="true"><path fill="currentColor" d="M1073 126H757A390 387.500 0 0 0 757 901H1126V322H984V560L757 325H620V713H750V497L985 768H764A258 254.500 0 0 1 764 259H1073Z"/></svg>
-        <span class="brand-name">CNOTE Healthtech</span>
-      </a>
-      <p>Clinical natural language processing</p>
-    </div>
-    <div class="foot-meta">
-      <p><a href="mailto:enquiries@cnote.co.uk">enquiries@cnote.co.uk</a></p>
-      <p>CNOTE Healthtech Ltd · Registered in England and Wales, company no. 17228849</p>
-      <p>Figures from the C-NOTE product data sheet, September 2026.</p>
-    </div>
+    <p>CNOTE Healthtech Ltd · Registered in England and Wales, company no. 17228849</p>
+    <p><a href="mailto:enquiries@cnote.co.uk">enquiries@cnote.co.uk</a> · <a href="https://github.com/Cnote-Healthtech">GitHub</a></p>
   </div>
 </footer>
-
-<script>
-(function () {
-  var D = [[89.82,94.78,100.0],[90.37,94.32,96.09],[90.37,94.32,96.09],[90.48,94.09,94.73],[90.57,93.94,94.33],[90.82,93.71,93.34],[90.81,93.71,93.27],[90.84,93.63,93.09],[91.06,93.25,91.83],[91.06,93.25,91.83],[91.38,93.25,91.02],[91.38,93.25,91.02],[91.38,93.25,91.02],[91.63,93.17,89.95],[91.82,92.94,88.88],[91.82,92.94,88.86],[91.82,92.94,88.86],[91.82,92.94,88.86],[92.33,92.4,86.92],[92.33,92.4,86.92],[92.33,92.4,86.92],[92.33,92.4,86.92],[92.33,92.4,86.92],[92.78,91.63,84.76],[92.87,91.48,84.31],[93.0,91.1,83.54],[93.0,91.1,83.54],[93.0,91.1,83.54],[93.0,91.1,83.54],[93.0,91.1,83.54],[93.0,91.1,83.54],[93.0,91.1,83.54],[93.17,90.64,82.78],[93.28,90.41,81.94],[93.44,90.18,81.18],[93.5,89.87,80.74],[93.5,89.87,80.74],[93.5,89.87,80.74],[93.64,89.79,80.01],[93.64,89.79,80.01],[93.64,89.79,80.01],[93.64,89.79,80.01],[93.66,89.79,79.96],[93.66,89.64,79.5],[93.66,89.64,79.5],[93.65,89.56,79.23],[93.73,88.49,77.62],[93.73,88.49,77.62],[93.73,87.18,75.3],[93.73,87.18,75.3],[93.81,87.03,74.74],[93.81,86.95,74.53],[93.95,86.72,73.37],[93.95,86.72,73.37],[93.95,86.72,73.37],[93.95,86.72,73.37],[93.95,86.72,73.34],[93.95,86.72,73.34],[93.95,86.72,73.34],[94.06,85.42,70.56],[94.06,85.42,70.56],[94.06,85.42,70.56],[94.06,85.42,70.56],[94.06,85.42,70.56],[94.29,83.73,68.02],[94.32,83.58,67.58],[94.32,83.58,67.58],[94.36,83.5,67.29],[94.36,83.5,67.29],[94.51,83.12,66.54],[94.51,83.12,66.54],[94.51,83.12,66.54],[94.75,82.12,64.78],[94.75,82.12,64.78],[94.75,82.12,64.78],[94.75,82.12,64.78],[95.35,81.04,62.13],[95.37,80.97,61.53],[95.37,80.97,61.53],[95.44,80.66,60.86],[95.44,80.66,60.86],[95.5,80.2,60.13],[95.54,79.28,57.3],[95.54,79.28,57.3],[95.6,79.28,57.14],[95.61,78.97,55.88],[96.0,75.98,51.51],[96.0,75.98,51.49],[96.04,74.83,49.78],[96.23,73.45,47.63],[96.47,70.61,44.69],[96.54,70.38,44.42],[96.69,68.99,42.41],[97.6,64.47,36.19],[97.81,63.85,34.43],[98.28,61.01,31.9],[98.28,61.01,31.9],[98.74,55.03,26.46],[98.85,53.34,25.16],[99.55,35.76,12.82]];
-  var G = {"x0":72,"w":558,"y0":16,"h":260,"tmax":99};
-  var thr = document.getElementById('thr');
-  if (!thr || !D.length) return;
-  var cur = document.getElementById('cur');
-  var dots = ['dp', 'dr', 'dk'].map(function (id) { return document.getElementById(id); });
-  var out = ['ro-p', 'ro-r', 'ro-k'].map(function (id) { return document.getElementById(id); });
-  var roT = document.getElementById('ro-t');
-  var presets = document.querySelectorAll('.presets button');
-  function set(t) {
-    t = Math.max(0, Math.min(D.length - 1, +t));
-    var row = D[t], x = G.x0 + (t / G.tmax) * G.w;
-    cur.setAttribute('transform', 'translate(' + x.toFixed(1) + ',0)');
-    for (var i = 0; i < 3; i++) {
-      dots[i].setAttribute('cy', (G.y0 + G.h * (1 - row[i] / 100)).toFixed(1));
-      out[i].textContent = (row[i] < 100 ? Math.min(99, Math.round(row[i])) : 100) + '%';
-    }
-    roT.textContent = t;
-    thr.value = t;
-    thr.style.setProperty('--fill', (t / G.tmax * 100) + '%');
-    presets.forEach(function (b) { b.setAttribute('aria-pressed', String(+b.dataset.t === t)); });
-  }
-  thr.addEventListener('input', function () { set(thr.value); });
-  presets.forEach(function (b) { b.addEventListener('click', function () { set(b.dataset.t); }); });
-  set(40);
-})();
-</script>
 </body>
 </html>
